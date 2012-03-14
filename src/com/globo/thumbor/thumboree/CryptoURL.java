@@ -17,6 +17,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
+import com.globo.thumbor.exceptions.NoImageURLSpecifiedException;
+
 public class CryptoURL {
 	
 	private String key;
@@ -50,7 +52,11 @@ public class CryptoURL {
 		return "/" + encryptedUrl + "/" + this.imageURL;
 	}
 	
-	public String requestPath(){
+	public String requestPath() throws NoImageURLSpecifiedException {
+		if (this.imageURL == null || this.imageURL == "") {
+			throw new NoImageURLSpecifiedException("The image url can't be null or empty.");
+		}
+
 		List<String> parts = new ArrayList<String>();
 		
 		if (this.width != 0 || this.height != 0) {
