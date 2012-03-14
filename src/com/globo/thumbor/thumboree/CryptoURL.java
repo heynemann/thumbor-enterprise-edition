@@ -26,6 +26,7 @@ public class CryptoURL {
 	private String imageURL;
 	private boolean meta;
 	private boolean smart;
+	private boolean fitIn;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
@@ -66,16 +67,20 @@ public class CryptoURL {
 
 		List<String> parts = new ArrayList<String>();
 		
+		if (this.meta) {
+			parts.add("meta");
+		}
+		
+		if (this.fitIn) {
+			parts.add("fit-in");
+		}
+
 		if (this.width != 0 || this.height != 0) {
 			parts.add(this.width + "x" + this.height);
 		}
 		
 		if (this.smart) {
 			parts.add("smart");
-		}
-		
-		if (this.meta) {
-			parts.add("meta");
 		}
 		
 		String url = "";
@@ -126,6 +131,13 @@ public class CryptoURL {
 	
 	public CryptoURL withSmartCropping() {
 		this.smart = true;
+		return this;
+	}
+	
+	public CryptoURL fitIn(int width, int height) {
+		this.width = width;
+		this.height = height;
+		this.fitIn = true;
 		return this;
 	}
 	

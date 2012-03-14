@@ -44,5 +44,14 @@ public class CryptoURLTest {
 		String expectedUrl = "/YV6ASUwnbI8XwBw6LpMdv1wy7xC-EHp44LIQqyPYPIqa-dX7JCv4LSeObHxPyY17/my.server.com/some/path/to/image.jpg";
 		assertEquals(expectedUrl, this.cryptoURL.withSmartCropping().toString());
 	}
+	
+	/**
+	 * Scenario 5
+	 */
+	@Test
+	public void canEncriptWithFitIn() {
+		String expectedUrl = "/nZlz3CEKZFMVFcNo7KKFzFWKWb7W2fFEqo_LQ2omj13fQPzSSENNk7Iz8Pc4sFen/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.fitIn(0,0).toString());
+	}
 
 }
