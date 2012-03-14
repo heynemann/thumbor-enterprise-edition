@@ -31,7 +31,7 @@ public class CryptoURL {
 		this.imageURL = imageURL;
 	}
 
-	public String generate() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, ShortBufferException, BadPaddingException {
+	public String generate() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, ShortBufferException, BadPaddingException, NoImageURLSpecifiedException {
 		String url = this.requestPath();
 		
 		url = CryptoURL.rightPad(url, '{');
