@@ -89,4 +89,13 @@ public class CryptoURLTest {
 		String expectedUrl = "/ib7aw8i4eZgB4O1uKGYPK60opAJfqN_5yh0XwqPlyM2mH5xrM-n_C6iUxpp8Tepa/my.server.com/some/path/to/image.jpg";
 		assertEquals(expectedUrl, this.cryptoURL.align(CryptoURL.VAlign.TOP).toString());
 	}
+	
+	/**
+	 * Scenario 10
+	 */
+	@Test
+	public void canEncriptWitnCrop() {
+		String expectedUrl = "/pppJViujgf3FyaOp5F6fQGIk5HS6ZXXDd-hzIwNvNXOv5wrU_0atPzQvFE2xPgQU/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.crop(10, 20, 30, 40).toString());
+	}
 }

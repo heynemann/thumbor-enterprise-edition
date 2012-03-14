@@ -63,6 +63,10 @@ public class CryptoURL {
 	private boolean flipVertically = false;
 	private HAlign halign = null;
 	private VAlign valign = null;
+	private int cropTop = 0;
+	private int cropLeft = 0;
+	private int cropRight = 0;
+	private int cropBottom = 0;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
@@ -105,6 +109,13 @@ public class CryptoURL {
 		
 		if (this.meta) {
 			parts.add("meta");
+		}
+		
+		if (this.cropTop > 0 
+				&& this.cropLeft > 0 
+				&& this.cropRight > 0 
+				&& this.cropBottom > 0) {
+			parts.add(this.cropLeft + "x" + this.cropTop + ":" + this.cropRight + "x"  + this.cropBottom);
 		}
 		
 		if (this.fitIn) {
@@ -212,6 +223,14 @@ public class CryptoURL {
 	
 	public CryptoURL align(HAlign halign) {
 		this.halign = halign;
+		return this;
+	}
+	
+	public CryptoURL crop(int left, int top, int right, int bottom) {
+		this.cropLeft = left;
+		this.cropTop = top;
+		this.cropRight = right;
+		this.cropBottom = bottom;
 		return this;
 	}
 	
