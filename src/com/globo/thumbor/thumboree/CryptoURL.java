@@ -69,8 +69,15 @@ public class CryptoURL {
 	private int cropBottom = 0;
 	
 	public CryptoURL(String key, String imageURL) {
-		this.key = key;
+		this.key = this.inflateKey(key);
 		this.imageURL = imageURL;
+	}
+	
+	private String inflateKey(String key) {
+		while (key.length() < 16) {
+			key += key;
+		}
+		return key.substring(0, 16);
 	}
 
 	public String generate() throws NoSuchAlgorithmException, 
