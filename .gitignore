@@ -3,3 +3,4 @@
 .classpath
 bin/
 .DS_Store
+*.swp
