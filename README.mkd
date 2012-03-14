@@ -28,6 +28,12 @@ Tells thumbor to return metadata instead of the actual image.
 
 Usage: ```crypto.withMetaDataOnly()```
 
+## withSmartCropping
+
+Tells thumbor to use smart cropping (Face and Feature Recognition).
+
+Usage: ```crypto.withSmartCropping()```
+
 ## resize
 
 Changes the target width and height for the generated image.
