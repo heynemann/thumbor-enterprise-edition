@@ -15,5 +15,6 @@ Usage
 Using thumborEE is pretty simple, all you have to do is create a CryptoURL
 instance with the proper key and original image URL and start customizing it.
 
-.. code-block:: ruby
+.. code-block:: java
+
     CryptoURL crypto = new CryptoURL('my-security-key', 'http://my.server.com/path/to/my/image.jpg');
