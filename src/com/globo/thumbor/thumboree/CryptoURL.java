@@ -199,9 +199,9 @@ public class CryptoURL {
 		return this;
 	}
 	
-	public CryptoURL align(VAlign valign, HAlign halign) {
-		this.valign = valign;
+	public CryptoURL align(HAlign halign, VAlign valign) {
 		this.halign = halign;
+		this.valign = valign;
 		return this;
 	}
 	

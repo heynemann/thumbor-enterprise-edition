@@ -212,5 +212,81 @@ public class RequestPathTest {
 
 		assertEquals(expected, actual);
 	}
+
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a 'left' horizontal alignment option
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "left/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithHorizontalAlignment() throws NoImageURLSpecifiedException {
+		String expected = "left/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.align(CryptoURL.HAlign.LEFT).requestPath();
+
+		assertEquals(expected, actual);
+	}
+	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a 'center' horizontal alignment option
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "center/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithCentralAlignment() throws NoImageURLSpecifiedException {
+		String expected = "center/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.align(CryptoURL.HAlign.CENTER).requestPath();
+
+		assertEquals(expected, actual);
+	}
+
+//	Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And a 'top' vertical alignment option
+//	When
+//    I ask my library for an URL
+//	Then
+//    I get "top/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithTopAlignment() throws NoImageURLSpecifiedException {
+		String expected = "top/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.align(CryptoURL.VAlign.TOP).requestPath();
+
+		assertEquals(expected, actual);
+	}
+	
+//	Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And a 'middle' vertical alignment option
+//	When
+//    I ask my library for an URL
+//	Then
+//    I get "middle/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithMiddleAlignment() throws NoImageURLSpecifiedException {
+		String expected = "middle/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.align(CryptoURL.VAlign.MIDDLE).requestPath();
+
+		assertEquals(expected, actual);
+	}
+
+//	Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And a 'left' horizontal alignment option
+//    And a 'top' vertical alignment option
+//	When
+//    I ask my library for an URL
+//	Then
+//    I get "left/top/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithBothAlignments() throws NoImageURLSpecifiedException {
+		String expected = "left/top/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.align(CryptoURL.HAlign.LEFT, CryptoURL.VAlign.TOP).requestPath();
+
+		assertEquals(expected, actual);
+	}
 	
 }
