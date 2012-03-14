@@ -36,10 +36,20 @@ public class CryptoURL {
 		}
 	}
 	
-	public enum VAling {
-		TOP,
-		MIDDLE,
-		BOTTOM
+	public enum VAlign {
+		TOP("top"),
+		MIDDLE("middle"),
+		BOTTOM("bottom");
+		
+		private String type;
+		
+		VAlign(String type) {
+			this.type = type;
+		}
+		
+		public String toString() {
+			return this.type;
+		}
 	}
 	
 	private String key;
@@ -52,7 +62,7 @@ public class CryptoURL {
 	private boolean flipHorizontally = false;
 	private boolean flipVertically = false;
 	private HAlign halign = null;
-	private VAling valign = null;
+	private VAlign valign = null;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
@@ -117,6 +127,10 @@ public class CryptoURL {
 			sizeString += this.height;
 			
 			parts.add(sizeString);
+		}
+		
+		if (this.halign != null) {
+			parts.add(this.halign.toString());
 		}
 		
 		if (this.valign != null) {
@@ -185,13 +199,13 @@ public class CryptoURL {
 		return this;
 	}
 	
-	public CryptoURL align(VAling valign, HAlign halign) {
+	public CryptoURL align(VAlign valign, HAlign halign) {
 		this.valign = valign;
 		this.halign = halign;
 		return this;
 	}
 	
-	public CryptoURL align(VAling valign) {
+	public CryptoURL align(VAlign valign) {
 		this.valign = valign;
 		return this;
 	}

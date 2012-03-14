@@ -78,6 +78,15 @@ public class CryptoURLTest {
 	@Test
 	public void canEncriptWitnHorizontalAlign() {
 		String expectedUrl = "/R7JICjkMQjLpWu7yS49k81wy7xC-EHp44LIQqyPYPIqa-dX7JCv4LSeObHxPyY17/my.server.com/some/path/to/image.jpg";
-		assertEquals(expectedUrl, this.cryptoURL.align(CryptoURL.VAling.MIDDLE).toString());
+		assertEquals(expectedUrl, this.cryptoURL.align(CryptoURL.HAlign.RIGHT).toString());
+	}
+	
+	/**
+	 * Scenario 9
+	 */
+	@Test
+	public void canEncriptWitnVerticalAlign() {
+		String expectedUrl = "/ib7aw8i4eZgB4O1uKGYPK60opAJfqN_5yh0XwqPlyM2mH5xrM-n_C6iUxpp8Tepa/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.align(CryptoURL.VAlign.TOP).toString());
 	}
 }
