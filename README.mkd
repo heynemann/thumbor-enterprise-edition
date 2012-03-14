@@ -42,3 +42,11 @@ Usage: ```crypto.resize(width, height)```
 
 PS: if one of the dimensions (width or height) is zero, proportional dimension
 is applied. If both are zero, original image is returned.
+
+## fitIn
+
+Tells thumbor that the specified image must fit in the given box (defined by
+width x height).
+
+Usage: ```crypto.fitIn(width, height)```
+
