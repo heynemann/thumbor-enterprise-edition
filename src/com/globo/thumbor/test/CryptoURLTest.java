@@ -1,15 +1,6 @@
 package com.globo.thumbor.test;
 
-import static org.junit.Assert.*;
-
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.ByteOrder;
-import java.util.HashMap;
-import java.util.Map;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +33,11 @@ public class CryptoURLTest {
 		String actualURL = this.cryptoURL.resize(300, 200).toString();
 
 		assertEquals(actualURL, expectedURL);
+	}
+	
+	public void canEncriptWithMeta() {
+		String expectedUrl = "/Jj2Xp-__GWUzZ5zemvPGW2B3j5atA7X1ntF0irz-YGXUcE3-QpqkDbDnVUmBhHi-/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.withMetaData().toString());
 	}
 
 }

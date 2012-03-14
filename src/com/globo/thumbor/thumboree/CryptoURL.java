@@ -6,7 +6,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -25,13 +24,20 @@ public class CryptoURL {
 	private int width = 0;
 	private int height = 0;
 	private String imageURL;
+	private boolean meta;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
 		this.imageURL = imageURL;
 	}
 
-	public String generate() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, ShortBufferException, BadPaddingException, NoImageURLSpecifiedException {
+	public String generate() throws NoSuchAlgorithmException, 
+									NoSuchPaddingException, 
+									InvalidKeyException, 
+									IllegalBlockSizeException, 
+									ShortBufferException, 
+									BadPaddingException,
+									NoImageURLSpecifiedException {
 		String url = this.requestPath();
 		
 		url = CryptoURL.rightPad(url, '{');
@@ -61,6 +67,10 @@ public class CryptoURL {
 		
 		if (this.width != 0 || this.height != 0) {
 			parts.add(this.width + "x" + this.height);
+		}
+		
+		if (this.meta) {
+			parts.add("meta");
 		}
 		
 		String url = "";
@@ -101,6 +111,11 @@ public class CryptoURL {
 	public CryptoURL resize(int width, int height) {
 		this.width = width;
 		this.height = height;
+		return this;
+	}
+	
+	public CryptoURL withMetaData() {
+		this.meta = true;
 		return this;
 	}
 	
