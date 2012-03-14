@@ -16,6 +16,9 @@ public class CryptoURLTest {
 		this.cryptoURL = new CryptoURL("my-security-keym", "my.server.com/some/path/to/image.jpg");
 	}
 
+	/**
+	 * Scenario 1
+	 */
 	@Test
 	public void canDecryptEncryptedURL() {
 		String expectedURL = "/l42l54VqaV_J-EcB5quNMP6CnsN9BX7htrh-QbPuDv0C7adUXX7LTo6DHm_woJtZ/my.server.com/some/path/to/image.jpg";
@@ -23,11 +26,23 @@ public class CryptoURLTest {
 
 		assertEquals(actualURL, expectedURL);
 	}
-	
+
+	/**
+	 * Scenario 3
+	 */
 	@Test
 	public void canEncriptWithMeta() {
 		String expectedUrl = "/Jj2Xp-__GWUzZ5zemvPGW2B3j5atA7X1ntF0irz-YGXUcE3-QpqkDbDnVUmBhHi-/my.server.com/some/path/to/image.jpg";
 		assertEquals(expectedUrl, this.cryptoURL.withMetaData().toString());
+	}
+	
+	/**
+	 * Scenario 4
+	 */
+	@Test
+	public void canEncriptWithSmart() {
+		String expectedUrl = "/YV6ASUwnbI8XwBw6LpMdv1wy7xC-EHp44LIQqyPYPIqa-dX7JCv4LSeObHxPyY17/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.withSmartCropping().toString());
 	}
 
 }
