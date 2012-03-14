@@ -53,5 +53,31 @@ public class CryptoURLTest {
 		String expectedUrl = "/nZlz3CEKZFMVFcNo7KKFzFWKWb7W2fFEqo_LQ2omj13fQPzSSENNk7Iz8Pc4sFen/my.server.com/some/path/to/image.jpg";
 		assertEquals(expectedUrl, this.cryptoURL.fitIn(0,0).toString());
 	}
+	
+	/**
+	 * Scenario 6
+	 */
+	@Test
+	public void canEncriptWitnFlipHorizontally() {
+		String expectedUrl = "/lMySk3L-Z2oa-RXQs4MgWWB3j5atA7X1ntF0irz-YGXUcE3-QpqkDbDnVUmBhHi-/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.flipHorizontally().toString());
+	}
+	
+	/**
+	 * Scenario 7
+	 */
+	@Test
+	public void canEncriptWitnFlipVertically() {
+		String expectedUrl = "/Yq1tjo95ZWIKrntANgW-UGB3j5atA7X1ntF0irz-YGXUcE3-QpqkDbDnVUmBhHi-/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.flipVertically().toString());
+	}
 
+	/**
+	 * Scenario 8
+	 */
+	@Test
+	public void canEncriptWitnHorizontalAlign() {
+		String expectedUrl = "/R7JICjkMQjLpWu7yS49k81wy7xC-EHp44LIQqyPYPIqa-dX7JCv4LSeObHxPyY17/my.server.com/some/path/to/image.jpg";
+		assertEquals(expectedUrl, this.cryptoURL.align(CryptoURL.VAling.MIDDLE).toString());
+	}
 }

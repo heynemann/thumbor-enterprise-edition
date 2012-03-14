@@ -20,6 +20,28 @@ import com.globo.thumbor.exceptions.NoImageURLSpecifiedException;
 
 public class CryptoURL {
 	
+	public enum HAlign {
+		RIGHT("right"),
+		CENTER("center"),
+		LEFT("left");
+		
+		private String type;
+		
+		HAlign(String type) {
+			this.type = type;
+		}
+		
+		public String toString() {
+			return this.type;
+		}
+	}
+	
+	public enum VAling {
+		TOP,
+		MIDDLE,
+		BOTTOM
+	}
+	
 	private String key;
 	private int width = 0;
 	private int height = 0;
@@ -29,6 +51,8 @@ public class CryptoURL {
 	private boolean fitIn = false;
 	private boolean flipHorizontally = false;
 	private boolean flipVertically = false;
+	private HAlign halign = null;
+	private VAling valign = null;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
@@ -95,6 +119,10 @@ public class CryptoURL {
 			parts.add(sizeString);
 		}
 		
+		if (this.valign != null) {
+			parts.add(this.valign.toString());
+		}
+		
 		if (this.smart) {
 			parts.add("smart");
 		}
@@ -154,6 +182,22 @@ public class CryptoURL {
 		this.width = width;
 		this.height = height;
 		this.fitIn = true;
+		return this;
+	}
+	
+	public CryptoURL align(VAling valign, HAlign halign) {
+		this.valign = valign;
+		this.halign = halign;
+		return this;
+	}
+	
+	public CryptoURL align(VAling valign) {
+		this.valign = valign;
+		return this;
+	}
+	
+	public CryptoURL align(HAlign halign) {
+		this.halign = halign;
 		return this;
 	}
 	
