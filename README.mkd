@@ -69,3 +69,8 @@ image.
 
 Usage: ```crypto.crop(left, top, right, bottom);```
 
+# Downloads
+
+*
+[0.1.0](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.1.0.jar
+"thumbor-enterprise-edition 0.1.0")
