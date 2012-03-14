@@ -61,3 +61,11 @@ Or: ```crypto.align(CryptoURL.HAlign.LEFT);```
 Or: ```crypto.align(CryptoURL.VAlign.TOP);```
 
 PS: If you supply only one alignment, the default is assumed for the other one.
+
+## crop
+
+Specifies the bounding points that tell thumbor where to manually crop the
+image.
+
+Usage: ```crypto.crop(left, top, right, bottom);```
+
