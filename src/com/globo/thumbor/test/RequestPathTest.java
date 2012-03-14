@@ -302,5 +302,54 @@ public class RequestPathTest {
 		String actual = this.cryptoURL.withMetaDataOnly().requestPath();
 
 		assertEquals(expected, actual);
+	}
+	
+//	Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And a manual crop left-top point of (10, 20)
+//    And a manual crop right-bottom point of (30, 40)
+//	When
+//    I ask my library for an URL
+//	Then
+//    I get "10x20:30x40/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithManualCropOnly() throws NoImageURLSpecifiedException {
+		String expected = "10x20:30x40/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.crop(10, 20, 30, 40).requestPath();
+
+		assertEquals(expected, actual);
 	}	
+	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a manual crop left-top point of (0, 0)
+//	    And a manual crop right-bottom point of (0, 0)
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithNullCrop() throws NoImageURLSpecifiedException {
+		String expected = "84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.crop(0, 0, 0, 0).requestPath();
+
+		assertEquals(expected, actual);
+	}
+	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a 'smart' flag
+//	    And a 'left' horizontal alignment option
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "left/smart/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLLeftAlignAndSmart() throws NoImageURLSpecifiedException {
+		String expected = "left/smart/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.align(CryptoURL.HAlign.LEFT).withSmartCropping().requestPath();
+
+		assertEquals(expected, actual);
+	}	
+	
 }
