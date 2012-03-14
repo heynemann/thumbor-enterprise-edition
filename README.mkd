@@ -50,3 +50,14 @@ width x height).
 
 Usage: ```crypto.fitIn(width, height)```
 
+## align
+
+Tells thumbor to crop based on a given alignment (Left, Center, Right, Top,
+Middle, Bottom). For more info, check [thumbor's
+documentation](https://github.com/globocom/thumbor/wiki "thumbor docs").
+
+Usage: ```crypto.align(CryptoURL.HAlign.LEFT, CryptoURL.VAlign.TOP);```
+Or: ```crypto.align(CryptoURL.HAlign.LEFT);```
+Or: ```crypto.align(CryptoURL.VAlign.TOP);```
+
+PS: If you supply only one alignment, the default is assumed for the other one.
