@@ -11,7 +11,7 @@ below in the Downloads section of the readme file and add it to your project.
 Using thumborEE is pretty simple, all you have to do is create a CryptoURL
 instance with the proper key and original image URL and start customizing it.
 
-```
+```java:
 CryptoURL crypto = new CryptoURL('my-security-key', 'http://my.server.com/path/to/my/image.jpg');
 System.out.println(crypto.resize(300, 200).withSmartCropping().toString());
 // /l42l54VqaV_J-EcB5quNMP6CnsN9BX7htrh-QbPuDv0C7adUXX7LTo6DHm_woJtZ/my.server.com/some/path/to/image.jpg
