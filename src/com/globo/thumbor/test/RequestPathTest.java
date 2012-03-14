@@ -117,5 +117,51 @@ public class RequestPathTest {
 		
 		assertEquals(expected, actual);
 	}
+
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a width of 200
+//	    And a height of 300
+//	    And the fit-in flag
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "fit-in/200x300/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithFitIn() throws NoImageURLSpecifiedException {
+		String expected = "fit-in/200x300/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.fitIn(200, 300).requestPath();
+		
+		assertEquals(expected, actual);
+	}
 	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And the flip flag
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "-0x0/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithHorizontalFlip() throws NoImageURLSpecifiedException {
+		String expected = "-0x0/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.flipHorizontally().requestPath();
+		
+		assertEquals(expected, actual);
+	}
+
+//	Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And the flip flag
+//	When
+//    I ask my library for an URL
+//	Then
+//    I get "0x-0/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithVerticalFlip() throws NoImageURLSpecifiedException {
+		String expected = "0x-0/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.flipVertically().requestPath();
+		
+		assertEquals(expected, actual);
+	}
 }

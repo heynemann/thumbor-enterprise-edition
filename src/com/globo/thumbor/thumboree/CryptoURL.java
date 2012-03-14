@@ -24,9 +24,11 @@ public class CryptoURL {
 	private int width = 0;
 	private int height = 0;
 	private String imageURL;
-	private boolean meta;
-	private boolean smart;
-	private boolean fitIn;
+	private boolean meta = false;
+	private boolean smart = false;
+	private boolean fitIn = false;
+	private boolean flipHorizontally = false;
+	private boolean flipVertically = false;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
@@ -75,8 +77,22 @@ public class CryptoURL {
 			parts.add("fit-in");
 		}
 
-		if (this.width != 0 || this.height != 0) {
-			parts.add(this.width + "x" + this.height);
+		if (this.width != 0 || this.height != 0 || this.flipHorizontally || this.flipVertically) {
+			String sizeString = "";
+			
+			if (this.flipHorizontally) {
+				sizeString += "-";
+			}
+			sizeString += this.width;
+			
+			sizeString += 'x';
+			
+			if (this.flipVertically) {
+				sizeString += "-";
+			}
+			sizeString += this.height;
+			
+			parts.add(sizeString);
 		}
 		
 		if (this.smart) {
@@ -148,5 +164,15 @@ public class CryptoURL {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public CryptoURL flipHorizontally() {
+		this.flipHorizontally  = true;
+		return this;
+	}
+	
+	public CryptoURL flipVertically() {
+		this.flipVertically  = true;
+		return this;
 	}
 }
