@@ -152,7 +152,7 @@ public class RequestPathTest {
 
 //	Given
 //    An image URL of "my.server.com/some/path/to/image.jpg"
-//    And the flip flag
+//    And the flop flag
 //	When
 //    I ask my library for an URL
 //	Then
@@ -164,4 +164,53 @@ public class RequestPathTest {
 		
 		assertEquals(expected, actual);
 	}
+	
+//Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And the flip flag
+//    And the flop flag
+//When
+//    I ask my library for an URL
+//Then
+//    I get "-0x-0/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithBothFlips() throws NoImageURLSpecifiedException {
+		String expected = "-0x-0/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.flipHorizontally().flipVertically().requestPath();
+		
+		assertEquals(expected, actual);
+	} 
+	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a width of 200
+//	    And the flip flag
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "-200x0/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithFlipHorizontallyWithWidth() throws NoImageURLSpecifiedException {
+		String expected = "-200x0/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.flipHorizontally().resize(200, 0).requestPath();
+		
+		assertEquals(expected, actual);
+	}
+	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a height of 200
+//	    And the flop flag
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "0x-200/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithFlipVerticallyWithHeight() throws NoImageURLSpecifiedException {
+		String expected = "0x-200/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.flipVertically().resize(0, 200).requestPath();
+
+		assertEquals(expected, actual);
+	}
+	
 }
