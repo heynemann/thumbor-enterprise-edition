@@ -16,3 +16,14 @@ CryptoURL crypto = new CryptoURL('my-security-key', 'http://my.server.com/path/t
 System.out.println(crypto.resize(300, 200).withSmartCropping().toString());
 // /l42l54VqaV_J-EcB5quNMP6CnsN9BX7htrh-QbPuDv0C7adUXX7LTo6DHm_woJtZ/my.server.com/some/path/to/image.jpg
 ```
+
+# Available Options
+
+## resize
+
+Changes the target width and height for the generated image.
+
+Usage: ```crypto.resize(width, height)```
+
+PS: if one of the dimensions (width or height) is zero, proportional dimension
+is applied. If both are zero, original image is returned.
