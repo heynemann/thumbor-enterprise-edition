@@ -55,4 +55,67 @@ public class RequestPathTest {
 		this.cryptoURL.requestPath();
 	}
 	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a width of 300
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "300x0/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithWidthAndNoHeight() throws NoImageURLSpecifiedException {
+		String expected = "300x0/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.resize(300, 0).requestPath();
+		
+		assertEquals(expected, actual);
+	}
+
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a height of 300
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "0x300/84996242f65a4d864aceb125e1c4c5ba" as URL	
+	@Test
+	public void testURLWithHeightAndNoWidth() throws NoImageURLSpecifiedException {
+		String expected = "0x300/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.resize(0, 300).requestPath();
+		
+		assertEquals(expected, actual);
+	}	
+
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a width of 200
+//	    And a height of 300
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "200x300/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithHeightAndWidth() throws NoImageURLSpecifiedException {
+		String expected = "200x300/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.resize(200, 300).requestPath();
+		
+		assertEquals(expected, actual);
+	}
+	
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a width of 200
+//	    And a height of 300
+//	    And the smart flag
+//	When
+//	    I ask my library for an URL
+//	Then
+//    I get "200x300/smart/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithHeightAndWidthAndSmart() throws NoImageURLSpecifiedException {
+		String expected = "200x300/smart/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.resize(200, 300).withSmartCropping().requestPath();
+		
+		assertEquals(expected, actual);
+	}
+	
 }
