@@ -13,7 +13,7 @@ public class CryptoURLTest {
 
 	@Before
 	public void setup() {
-		this.cryptoURL = new CryptoURL("my-security-keym", "my.server.com/some/path/to/image.jpg");
+		this.cryptoURL = new CryptoURL("my-security-key", "my.server.com/some/path/to/image.jpg");
 	}
 
 	/**
