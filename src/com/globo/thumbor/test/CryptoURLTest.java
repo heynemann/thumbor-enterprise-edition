@@ -33,7 +33,7 @@ public class CryptoURLTest {
 	@Test
 	public void canEncriptWithMeta() {
 		String expectedUrl = "/Jj2Xp-__GWUzZ5zemvPGW2B3j5atA7X1ntF0irz-YGXUcE3-QpqkDbDnVUmBhHi-/my.server.com/some/path/to/image.jpg";
-		assertEquals(expectedUrl, this.cryptoURL.withMetaData().toString());
+		assertEquals(expectedUrl, this.cryptoURL.withMetaDataOnly().toString());
 	}
 	
 	/**

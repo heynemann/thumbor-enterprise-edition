@@ -288,5 +288,19 @@ public class RequestPathTest {
 
 		assertEquals(expected, actual);
 	}
-	
+
+//	Given
+//    An image URL of "my.server.com/some/path/to/image.jpg"
+//    And a 'meta' flag
+//	When
+//    I ask my library for an URL
+//	Then
+//    I get "meta/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testURLWithMetadataOnly() throws NoImageURLSpecifiedException {
+		String expected = "meta/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.withMetaDataOnly().requestPath();
+
+		assertEquals(expected, actual);
+	}	
 }
