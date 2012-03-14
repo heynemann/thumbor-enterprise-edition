@@ -25,6 +25,7 @@ public class CryptoURL {
 	private int height = 0;
 	private String imageURL;
 	private boolean meta;
+	private boolean smart;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
@@ -67,6 +68,10 @@ public class CryptoURL {
 		
 		if (this.width != 0 || this.height != 0) {
 			parts.add(this.width + "x" + this.height);
+		}
+		
+		if (this.smart) {
+			parts.add("smart");
 		}
 		
 		if (this.meta) {
@@ -116,6 +121,11 @@ public class CryptoURL {
 	
 	public CryptoURL withMetaData() {
 		this.meta = true;
+		return this;
+	}
+	
+	public CryptoURL withSmartCropping() {
+		this.smart = true;
 		return this;
 	}
 	
