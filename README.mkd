@@ -1,7 +1,7 @@
 # Introduction
 
 Thumbor Enterprise Edition (a.k.a thumborEE) is a library to generate encrypted
-URLs for thumbor.
+[thumbor](https://github.com/globocom/thumbor/wiki "thumbor docs") URLs.
 
 In order to use it, just download the latest version from the listed versions
 below in the Downloads section of the readme file and add it to your project.
@@ -18,6 +18,9 @@ System.out.println(crypto.resize(300, 200).withSmartCropping().toString());
 ```
 
 # Available Options
+
+For more information on what each option means don't forget to check [thumbor's
+documentation](https://github.com/globocom/thumbor/wiki "thumbor docs").
 
 ## resize
 
