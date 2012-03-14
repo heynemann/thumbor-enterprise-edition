@@ -30,9 +30,9 @@ public class CryptoURLTest {
 //    And an image URL of "my.server.com/some/path/to/image.jpg"
 //    And a width of 300
 //    And a height of 200
-//When
+//	When
 //    I ask my library for an encrypted URL
-//Then
+//	Then
 //    I get
 //    '/l42l54VqaV_J-EcB5quNMP6CnsN9BX7htrh-QbPuDv0C7adUXX7LTo6DHm_woJtZ/my.server.com/some/path/to/image.jpg'
 //    as url
@@ -40,8 +40,7 @@ public class CryptoURLTest {
 	public void canDecryptEncryptedURL() {
 		String expectedURL = "/l42l54VqaV_J-EcB5quNMP6CnsN9BX7htrh-QbPuDv0C7adUXX7LTo6DHm_woJtZ/my.server.com/some/path/to/image.jpg";
 		String actualURL = this.cryptoURL.resize(300, 200).toString();
-		System.out.println(expectedURL);
-		System.out.println(actualURL);
+
 		assertEquals(actualURL, expectedURL);
 	}
 

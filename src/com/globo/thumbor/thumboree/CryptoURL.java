@@ -26,14 +26,11 @@ public class CryptoURL {
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = key;
-		System.out.println(this.key);
 		this.imageURL = imageURL;
 	}
 
 	public String generate() throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, ShortBufferException, BadPaddingException {
 		String url = this.requestPath();
-		String imageHash = CryptoURL.md5(this.imageURL);
-		url += "/" + imageHash;
 		
 		url = CryptoURL.rightPad(url, '{');
 		
@@ -65,11 +62,9 @@ public class CryptoURL {
 			url += part + "/";
 		}
 		
-		if (url == "") {
-			return "";
-		}
-		
-		return url.substring(0, url.length() - 1);
+		String imageHash = CryptoURL.md5(this.imageURL);
+		url += imageHash;
+		return url;
 	}
 	
 	public static String rightPad(String url, char padChar) {
@@ -106,25 +101,9 @@ public class CryptoURL {
 	public String toString() {
 		try {
 			return this.generate();
-		} catch (InvalidKeyException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ShortBufferException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BadPaddingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
-		return "WTF?";
 	}
 }
