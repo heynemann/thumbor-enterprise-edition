@@ -395,5 +395,21 @@ public class RequestPathTest {
 
 		assertEquals(expected, actual);
 	}	
+
+//	Given
+//	    An image URL of "my.server.com/some/path/to/image.jpg"
+//	    And a 'quality(20)' filter
+//	    And a 'brightness(10)' filter
+//	When
+//	    I ask my library for an URL
+//	Then
+//	    I get "filters:quality(20):brightness(10)/84996242f65a4d864aceb125e1c4c5ba" as URL
+	@Test
+	public void testFiltersURL() throws NoImageURLSpecifiedException {
+		String expected = "filters:quality(20):brightness(10)/84996242f65a4d864aceb125e1c4c5ba";
+		String actual = this.cryptoURL.withFilter("quality(20)").withFilter("brightness(10)").requestPath();
+
+		assertEquals(expected, actual);
+	}
 	
 }

@@ -67,10 +67,12 @@ public class CryptoURL {
 	private int cropLeft = 0;
 	private int cropRight = 0;
 	private int cropBottom = 0;
+	private List<String> filters;
 	
 	public CryptoURL(String key, String imageURL) {
 		this.key = this.inflateKey(key);
 		this.imageURL = imageURL;
+		this.filters = new ArrayList<String>();
 	}
 	
 	private String inflateKey(String key) {
@@ -157,6 +159,15 @@ public class CryptoURL {
 		
 		if (this.smart) {
 			parts.add("smart");
+		}
+		
+		if (!this.filters.isEmpty()) {
+			String filterString = "";
+			for (String filter : this.filters) {
+				filterString += ":" + filter;
+			}
+
+			parts.add("filters" + filterString);
 		}
 		
 		String url = "";
@@ -251,6 +262,11 @@ public class CryptoURL {
 		return this;
 	}
 
+	public CryptoURL withFilter(String filter) {
+		this.filters.add(filter);
+		return this;
+	}
+	
 	public String toString() {
 		try {
 			return this.generate();
