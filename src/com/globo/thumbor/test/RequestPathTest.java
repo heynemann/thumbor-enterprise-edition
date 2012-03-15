@@ -337,7 +337,7 @@ public class RequestPathTest {
 	@Test
 	public void testURLWithMetadataOnly() throws NoImageURLSpecifiedException {
 		String expected = "meta/84996242f65a4d864aceb125e1c4c5ba";
-		String actual = this.cryptoURL.withMetaDataOnly().requestPath();
+		String actual = this.cryptoURL.metaDataOnly().requestPath();
 
 		assertEquals(expected, actual);
 	}

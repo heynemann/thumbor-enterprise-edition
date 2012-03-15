@@ -22,11 +22,11 @@ System.out.println(crypto.resize(300, 200).withSmartCropping().toString());
 For more information on what each option means don't forget to check [thumbor's
 documentation](https://github.com/globocom/thumbor/wiki "thumbor docs").
 
-## withMetaDataOnly
+## metaDataOnly
 
 Tells thumbor to return metadata instead of the actual image.
 
-Usage: ```crypto.withMetaDataOnly()```
+Usage: ```crypto.metaDataOnly()```
 
 ## withSmartCropping
 

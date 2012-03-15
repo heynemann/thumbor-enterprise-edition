@@ -200,7 +200,7 @@ public class CryptoURL {
 		return this;
 	}
 	
-	public CryptoURL withMetaDataOnly() {
+	public CryptoURL metaDataOnly() {
 		this.meta = true;
 		return this;
 	}
