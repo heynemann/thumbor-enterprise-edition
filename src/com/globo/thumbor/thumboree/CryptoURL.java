@@ -240,15 +240,6 @@ public class CryptoURL {
 		this.cropBottom = bottom;
 		return this;
 	}
-	
-	public String toString() {
-		try {
-			return this.generate();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	public CryptoURL flipHorizontally() {
 		this.flipHorizontally  = true;
@@ -258,5 +249,14 @@ public class CryptoURL {
 	public CryptoURL flipVertically() {
 		this.flipVertically  = true;
 		return this;
+	}
+
+	public String toString() {
+		try {
+			return this.generate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
