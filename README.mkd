@@ -71,6 +71,10 @@ Usage: ```crypto.crop(left, top, right, bottom);```
 
 # Downloads
 
+https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.2.0.jar
+* [Release
+0.2.0 (15-Mar-2012)](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.2.0.jar
+"thumbor-enterprise-edition 0.2.0") - Filters support.
 * [Release
 0.1.0 (14-Mar-2012)](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.1.0.jar
 "thumbor-enterprise-edition 0.1.0") - Initial release, still lacking filters
