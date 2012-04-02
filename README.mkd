@@ -73,7 +73,7 @@ Usage: ```crypto.crop(left, top, right, bottom);```
 
 Tells thumbor to use this filter. Can be called multiple times to specify different filters.
 
-Usage: ```crypto.withFilter("quality(20)").withFilter("round_corner(3,255,255,255)")
+Usage: ```crypto.withFilter("quality(20)").withFilter("round_corner(3,255,255,255)")```
 
 # Downloads
 
