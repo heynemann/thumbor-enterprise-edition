@@ -69,6 +69,12 @@ image.
 
 Usage: ```crypto.crop(left, top, right, bottom);```
 
+## withFilter
+
+Tells thumbor to use this filter. Can be called multiple times to specify different filters.
+
+Usage: ```crypto.withFilter("quality(20)").withFilter("round_corner(3,255,255,255)")
+
 # Downloads
 
 * [Release 0.2.0 (15-Mar-2012)](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.2.0.jar "thumbor-enterprise-edition 0.2.0") - Filters support.
