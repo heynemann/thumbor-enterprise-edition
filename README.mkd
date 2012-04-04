@@ -77,6 +77,7 @@ Usage: ```crypto.withFilter("quality(20)").withFilter("round_corner(3,255,255,25
 
 # Downloads
 
+* [Release 0.3.0 (04-Apr-2012)](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.3.0.jar "thumbor-enterprise-edition 0.3.0") - Bug fix (Contribution of Fernando Carolo).
 * [Release 0.2.0 (15-Mar-2012)](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.2.0.jar "thumbor-enterprise-edition 0.2.0") - Filters support.
 * [Release 0.1.0 (14-Mar-2012)](https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.1.0.jar "thumbor-enterprise-edition 0.1.0") - Initial release, still lacking filters support.
 
