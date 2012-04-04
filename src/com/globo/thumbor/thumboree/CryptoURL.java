@@ -202,7 +202,7 @@ public class CryptoURL {
 			e.printStackTrace();
 		}
 		BigInteger hash = new BigInteger(1, md.digest(imageUrl.getBytes()));
-		return hash.toString(16);
+		return String.format("%032x", hash);
 	}
 
 	public CryptoURL resize(int width, int height) {
