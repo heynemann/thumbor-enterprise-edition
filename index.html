@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Thumbor-enterprise-edition : thumbor package to generate URLs in Java" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Thumbor-enterprise-edition</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/heynemann/thumbor-enterprise-edition">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Thumbor-enterprise-edition</h1>
+          <h2 id="project_tagline">thumbor package to generate URLs in Java</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/heynemann/thumbor-enterprise-edition/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/heynemann/thumbor-enterprise-edition/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Introduction</h1>
+
+<p>Thumbor Enterprise Edition (a.k.a thumborEE) is a library to generate encrypted
+<a href="https://github.com/globocom/thumbor/wiki" title="thumbor docs">thumbor</a> URLs.</p>
+
+<p>In order to use it, just download the latest version from the listed versions
+below in the Downloads section of the readme file and add it to your project.</p>
+
+<h1>Usage</h1>
+
+<p>Using thumborEE is pretty simple, all you have to do is create a CryptoURL
+instance with the proper key and original image URL and start customizing it.</p>
+
+<pre lang="java:"><code>CryptoURL crypto = new CryptoURL(
+    'my-security-key',
+    '<a href="http://my.server.com/path/to/my/image.jpg">http://my.server.com/path/to/my/image.jpg</a>'
+);
+
+System.out.println(
+    crypto.resize(300, 200).withSmartCropping().toString()
+);
+
+// /l42l54VqaV_J-EcB5quNMP6CnsN9BX7htrh-QbPuDv0C7adUXX7LTo6DHm_woJtZ/my.server.com/some/path/to/image.jpg
+</code></pre>
+
+<h1>Available Options</h1>
+
+<p>For more information on what each option means don't forget to check <a href="https://github.com/globocom/thumbor/wiki" title="thumbor docs">thumbor's
+documentation</a>.</p>
+
+<h2>metaDataOnly</h2>
+
+<p>Tells thumbor to return metadata instead of the actual image.</p>
+
+<p>Usage: <code>crypto.metaDataOnly()</code></p>
+
+<h2>withSmartCropping</h2>
+
+<p>Tells thumbor to use smart cropping (Face and Feature Recognition).</p>
+
+<p>Usage: <code>crypto.withSmartCropping()</code></p>
+
+<h2>resize</h2>
+
+<p>Changes the target width and height for the generated image.</p>
+
+<p>Usage: <code>crypto.resize(width, height)</code></p>
+
+<p>PS: if one of the dimensions (width or height) is zero, proportional dimension
+is applied. If both are zero, original image is returned.</p>
+
+<h2>fitIn</h2>
+
+<p>Tells thumbor that the specified image must fit in the given box (defined by
+width x height).</p>
+
+<p>Usage: <code>crypto.fitIn(width, height)</code></p>
+
+<h2>align</h2>
+
+<p>Tells thumbor to crop based on a given alignment (Left, Center, Right, Top,
+Middle, Bottom). For more info, check <a href="https://github.com/globocom/thumbor/wiki" title="thumbor docs">thumbor's
+documentation</a>.</p>
+
+<p>Usage: <code>crypto.align(CryptoURL.HAlign.LEFT, CryptoURL.VAlign.TOP);</code>
+Or: <code>crypto.align(CryptoURL.HAlign.LEFT);</code>
+Or: <code>crypto.align(CryptoURL.VAlign.TOP);</code></p>
+
+<p>PS: If you supply only one alignment, the default is assumed for the other one.</p>
+
+<h2>crop</h2>
+
+<p>Specifies the bounding points that tell thumbor where to manually crop the
+image.</p>
+
+<p>Usage: <code>crypto.crop(left, top, right, bottom);</code></p>
+
+<h2>withFilter</h2>
+
+<p>Tells thumbor to use this filter. Can be called multiple times to specify different filters.</p>
+
+<p>Usage: <code>crypto.withFilter("quality(20)").withFilter("round_corner(3,255,255,255)")</code></p>
+
+<h1>Downloads</h1>
+
+<ul>
+<li>
+<a href="https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.3.0.jar" title="thumbor-enterprise-edition 0.3.0">Release 0.3.0 (04-Apr-2012)</a> - Bug fix (Contribution of Fernando Carolo).</li>
+<li>
+<a href="https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.2.0.jar" title="thumbor-enterprise-edition 0.2.0">Release 0.2.0 (15-Mar-2012)</a> - Filters support.</li>
+<li>
+<a href="https://github.com/heynemann/thumbor-enterprise-edition/blob/master/downloads/thumboree-0.1.0.jar" title="thumbor-enterprise-edition 0.1.0">Release 0.1.0 (14-Mar-2012)</a> - Initial release, still lacking filters support.</li>
+</ul><h1>License</h1>
+
+<p>Thumbor is licensed under the MIT License:</p>
+
+<blockquote>
+<p>The MIT License</p>
+
+<p>Copyright (c) 2011 Bernardo Heynemann <a href="mailto:heynemann@gmail.com">heynemann@gmail.com</a></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+</blockquote>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Thumbor-enterprise-edition maintained by <a href="https://github.com/heynemann">heynemann</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
