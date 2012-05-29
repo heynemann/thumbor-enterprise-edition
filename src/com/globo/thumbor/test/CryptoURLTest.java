@@ -16,6 +16,14 @@ public class CryptoURLTest {
 		this.cryptoURL = new CryptoURL("my-security-key", "my.server.com/some/path/to/image.jpg");
 	}
 
+	@Test
+	public void testRightPad() {
+		assertEquals("", CryptoURL.rightPad("", 'X'));
+		assertEquals("testXXXXXXXXXXXX", CryptoURL.rightPad("test", 'X'));
+		assertEquals("sixteencharacter", CryptoURL.rightPad("sixteencharacter", 'X'));
+		assertEquals("morethansixteencharsXXXXXXXXXXXX", CryptoURL.rightPad("morethansixteenchars", 'X'));
+	}
+
 	/**
 	 * Scenario 1
 	 */
