@@ -183,7 +183,7 @@ public class CryptoURL {
 	public static String rightPad(String url, char padChar) {
 		int numberOfChars = 16 - url.length() % 16;
 
-		if (numberOfChars == 0) {
+		if (numberOfChars == 16) {
 			return url;
 		}
 		
