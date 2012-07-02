@@ -10,11 +10,13 @@ import java.util.List;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.Mac;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.ShortBufferException;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
 
 import com.globo.thumbor.exceptions.NoImageURLSpecifiedException;
 
@@ -67,10 +69,11 @@ public class CryptoURL {
 	private int cropLeft = 0;
 	private int cropRight = 0;
 	private int cropBottom = 0;
+	private boolean oldFormat = false;
 	private List<String> filters;
 	
 	public CryptoURL(String key, String imageURL) {
-		this.key = this.inflateKey(key);
+		this.key = key;
 		this.imageURL = imageURL;
 		this.filters = new ArrayList<String>();
 	}
@@ -81,7 +84,7 @@ public class CryptoURL {
 		}
 		return key.substring(0, 16);
 	}
-
+	
 	public String generate() throws NoSuchAlgorithmException, 
 									NoSuchPaddingException, 
 									InvalidKeyException, 
@@ -89,13 +92,49 @@ public class CryptoURL {
 									ShortBufferException, 
 									BadPaddingException,
 									NoImageURLSpecifiedException {
-		String url = this.requestPath();
+		if (this.oldFormat) {
+			return this.generateOld();
+		}
+		
+		String url = this.requestPath(false);
+		String signature = CryptoURL.hmacSha1(url, this.key);
+		
+		return signature + '/' + url;
+	}
+	
+	public static String hmacSha1(String value, String key) {
+        try {
+        	
+        	SecretKeySpec keySpec = new SecretKeySpec(
+        	        key.getBytes(),
+        	        "HmacSHA1");
+
+        	Mac mac = Mac.getInstance("HmacSHA1");
+        	mac.init(keySpec);
+        	byte[] result = mac.doFinal(value.getBytes());
+
+        	String signedUrl = new String(Base64.encodeBase64(result)).replace('+', '-').replace('/', '_');
+
+    		return "/" + signedUrl;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+	public String generateOld() throws NoSuchAlgorithmException, 
+										NoSuchPaddingException, 
+										InvalidKeyException, 
+										IllegalBlockSizeException, 
+										ShortBufferException, 
+										BadPaddingException,
+										NoImageURLSpecifiedException {
+		String url = this.requestPath(true);
 		
 		url = CryptoURL.rightPad(url, '{');
 		
 		byte[] urlBytes = url.getBytes();
 		
-		SecretKeySpec key = new SecretKeySpec(this.key.getBytes(), "AES");
+		SecretKeySpec key = new SecretKeySpec(this.inflateKey(this.key).getBytes(), "AES");
 		Cipher cipher = Cipher.getInstance("AES/ECB/NoPadding");
 		
 		cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -110,6 +149,10 @@ public class CryptoURL {
 	}
 	
 	public String requestPath() throws NoImageURLSpecifiedException {
+		return requestPath(true);
+	}
+	
+	public String requestPath(boolean withHash) throws NoImageURLSpecifiedException {
 		if (this.imageURL == null || this.imageURL == "") {
 			throw new NoImageURLSpecifiedException("The image url can't be null or empty.");
 		}
@@ -175,15 +218,19 @@ public class CryptoURL {
 			url += part + "/";
 		}
 		
-		String imageHash = CryptoURL.md5(this.imageURL);
-		url += imageHash;
+		if (withHash) {
+			String imageHash = CryptoURL.md5(this.imageURL);
+			url += imageHash;
+		} else {
+			url += this.imageURL;
+		}
 		return url;
 	}
 	
 	public static String rightPad(String url, char padChar) {
 		int numberOfChars = 16 - url.length() % 16;
 
-		if (numberOfChars == 16) {
+		if (numberOfChars == 0) {
 			return url;
 		}
 		
@@ -264,6 +311,11 @@ public class CryptoURL {
 
 	public CryptoURL withFilter(String filter) {
 		this.filters.add(filter);
+		return this;
+	}
+	
+	public CryptoURL withOldFormat() {
+		this.oldFormat = true;
 		return this;
 	}
 	
