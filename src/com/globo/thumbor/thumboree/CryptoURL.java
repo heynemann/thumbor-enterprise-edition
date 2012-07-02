@@ -16,8 +16,6 @@ import javax.crypto.ShortBufferException;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.binary.Hex;
-
 import com.globo.thumbor.exceptions.NoImageURLSpecifiedException;
 
 public class CryptoURL {
