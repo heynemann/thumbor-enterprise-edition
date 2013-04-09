@@ -1,3 +1,5 @@
+## thumbor-enterprise-edition is deprecated in favor of [Pollexor](http://square.github.com/pollexor)
+
 # Introduction
 
 Thumbor Enterprise Edition (a.k.a thumborEE) is a library to generate encrypted
